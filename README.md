@@ -1,7 +1,5 @@
 # Desc
 
-Disini saya membuat skenario yang berisikan beberapa pertanyaan terkait data yang ada, dimana saya akan menjawab pertanyaan-pertanyaan tersebut.
-
 -- Marvel vs DC
 1. Rata rata dan jumlah budget, pendapatan mereka.
 2. Total film yang mereka produksi dari tahun 2000.
