@@ -4,7 +4,7 @@ select year(release_date) as yearr
 from data_film
 order by yearr;
 
--- 1. Rata rata dan jumlah budget, pendapatan mereka
+-- 1. Average revenue and total budget.
 select company,
 avg(revenue) as avg_rev, sum(budget) as total_budget
 from data_film
@@ -12,13 +12,13 @@ where company in ("Marvel Studios", "DC Comics")
 group by company;
 
 
--- 2. Total film yang mereka produksi dari tahun 2000
+-- 2. Total films produced over the year 2000.
 select company, count(title) as total_film_above_2000
 from data_film
 where company in ("Marvel Studios", "DC Comics") and year(release_date) >= 2000
 group by company;
 
--- 3. Film yang memiliki pendapatan terbanyak dari masing2 company
+-- 3. Movie have the most revenue by each company.
 with comp as
 (
 select distinct company
@@ -53,7 +53,7 @@ on comp.company = max_film_marvel.company
 left join max_film_dc
 on comp.company = max_film_dc.company;
 
--- 4. Film yang memiliki popularity terbanyak dari masing2 company
+-- 4. Movie have the most revenue by each company.
 with comp as
 (
 select distinct company
@@ -88,7 +88,7 @@ on comp.company = marvel.company
 left join dc
 on comp.company = dc.company;
 
--- 5. Apakah film yang memiliki popularity tertinggi dari masing-masing company berbanding lurus dengan vote averagenya
+-- 5. Is the film that has the highest popularity from each company directly proportional to its average vote.
 with comp as
 (
 select distinct company
