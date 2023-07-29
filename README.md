@@ -1,9 +1,8 @@
 # Desc
 
 -- Marvel vs DC
-1. Rata rata dan jumlah budget, pendapatan mereka.
-2. Total film yang mereka produksi dari tahun 2000.
-3. Film yang memiliki pendapatan terbanyak dari masing2 company.
-4. Film yang memiliki popularity terbanyak dari masing2 company.
-5. Apakah film yang memiliki popularity tertinggi dari masing-masing company.
-   berbanding lurus dengan vote averagenya.
+1. Average revenue and total budget.
+2. Total films produced over the year 2000.
+3. Movie have the most revenue by each company.
+4. Movie have the most popularity by each company.
+5. Is the film that has the highest popularity from each company directly proportional to its average vote.
