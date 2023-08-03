@@ -53,6 +53,21 @@ on comp.company = max_film_marvel.company
 left join max_film_dc
 on comp.company = max_film_dc.company;
 
+-- Use RANK()
+with expect as (
+select 
+	company,
+    title, 
+    revenue,
+	rank() over(partition by company order by revenue desc) as ranks
+from data_film
+where company in ('Marvel Studios', 'DC Comics')
+)
+select company, title, revenue
+from expect
+where ranks = 1
+order by revenue desc;
+
 -- 4. Movie have the most revenue by each company.
 with comp as
 (
@@ -87,6 +102,17 @@ left join marvel
 on comp.company = marvel.company
 left join dc
 on comp.company = dc.company;
+
+-- Use RANK()
+with expect as(
+select company, title, popularity,
+	rank() over(partition by company order by popularity desc) as ranks
+from data_film
+where company in ('Marvel Studios', 'DC Comics')
+)
+select company, title, popularity
+from expect
+where ranks = 1;
 
 -- 5. Is the film that has the highest popularity from each company directly proportional to its average vote.
 with comp as
@@ -147,3 +173,29 @@ left join marvel_vote
 on comp.company = marvel_vote.company
 left join dc_vote
 on comp.company = dc_vote.company;
+
+-- Use RANK
+with expect as(
+select
+	company,
+    title,
+    popularity,
+    vote_average,
+    rank() over(partition by company order by popularity desc) as ranks
+from
+	data_film
+where
+	company in ('Marvel Studios', 'DC Comics')
+)
+
+select 
+	company,
+  title,
+  popularity,
+  vote_average
+from
+	expect
+where
+	ranks = 1
+order by
+	popularity desc;
